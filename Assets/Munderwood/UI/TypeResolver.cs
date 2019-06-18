@@ -1,0 +1,13 @@
+using System;
+
+namespace Munderwood.UI
+{
+    public class TypeResolver
+    {
+        public object Resolve(string name, object[] arguments)
+        {
+           object resolvedType = Activator.CreateInstance(System.Type.GetType(name),arguments);
+           return resolvedType;
+        }
+    }
+}

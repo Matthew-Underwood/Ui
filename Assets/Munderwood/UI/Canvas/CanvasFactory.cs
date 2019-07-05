@@ -42,7 +42,7 @@ namespace Munderwood.UI.Canvas
 
             if (parentCanvas != null)
             {
-                createdCanvas.transform.parent = parentCanvas.transform;
+                createdCanvas.transform.SetParent(parentCanvas.transform,false);
             }
             return createdCanvas;
         }

@@ -23,7 +23,7 @@ namespace Munderwood.UI.Canvas
             this.canvas = canvas;
             this.button = Object.Instantiate(Resources.Load<GameObject>("Button"));
             _buttonDynamicEventProcessor = new ButtonDynamicEventProcessor(new ClickActionFactory());
-            this.button.transform.parent = this.canvas.transform;
+            this.button.transform.SetParent(this.canvas.transform,false);
         }
         
         public CanvasButtonsBuilder Text (string text)

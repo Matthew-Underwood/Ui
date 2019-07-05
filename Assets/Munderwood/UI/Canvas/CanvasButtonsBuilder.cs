@@ -44,10 +44,39 @@ namespace Munderwood.UI.Canvas
             this.button.GetComponent<RectTransform>().sizeDelta = new Vector2(width,height);
             return this;
         }
+        
+        public CanvasButtonsBuilder Click (string controllerName,string methodName)
+        {
+            var controller = _controllerResolver.Resolve(controllerName);
+            _buttonDynamicEventProcessor.process(this.button,controller,methodName);
+            return this;
+        }
+        
+        public CanvasButtonsBuilder Click<T> (string controllerName,string methodName, T testVal)
+        {
+            var controller = _controllerResolver.Resolve(controllerName);
+            _buttonDynamicEventProcessor.process(this.button,controller,methodName,testVal);
+            return this;
+        }
+        
         public CanvasButtonsBuilder Click<T,T2> (string controllerName,string methodName, T testVal,T2 testVal2)
         {
             var controller = _controllerResolver.Resolve(controllerName);
             _buttonDynamicEventProcessor.process(this.button,controller,methodName,testVal,testVal2);
+            return this;
+        }
+        
+        public CanvasButtonsBuilder Click<T,T2,T3> (string controllerName,string methodName, T testVal,T2 testVal2,T3 testVal3)
+        {
+            var controller = _controllerResolver.Resolve(controllerName);
+            _buttonDynamicEventProcessor.process(this.button,controller,methodName,testVal,testVal2,testVal3);
+            return this;
+        }
+        
+        public CanvasButtonsBuilder Click<T,T2,T3,T4> (string controllerName,string methodName, T testVal,T2 testVal2,T3 testVal3,T4 testVal4)
+        {
+            var controller = _controllerResolver.Resolve(controllerName);
+            _buttonDynamicEventProcessor.process(this.button,controller,methodName,testVal,testVal2,testVal3,testVal4);
             return this;
         }
         

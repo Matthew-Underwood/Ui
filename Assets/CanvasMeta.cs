@@ -5,10 +5,5 @@ using UnityEngine.Analytics;
 
 public class CanvasMeta : MonoBehaviour
 {
-
 	public int Level {get; set;}
-	void Start () {
-		
-	}
-
 }

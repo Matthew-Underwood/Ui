@@ -85,13 +85,5 @@ namespace Munderwood.UI.Canvas
             this.button.AddComponent<HoverableAction>();
             return this;
         }
-        
-        public CanvasButtonsBuilder RemoveCanvases (int level)
-        {
-            var controllerRegistry = Ui.GetControllerRegistry();
-            this.button.AddComponent<RemoveCanvasAction>().Level = level;
-            this.button.GetComponent<RemoveCanvasAction>().removeEvent.AddListener(_controllerResolver.Resolve("Project.Test.RemoveCanvasController").GetComponent<RemoveCanvasController>().RemoveCanvases);
-            return this;
-        }
     }
 }

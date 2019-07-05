@@ -14,8 +14,7 @@ namespace Munderwood.UI.Action
         {
             if (DynamicGenericEventInvoker != null)
             {
-                Type type = DynamicGenericEventInvoker.GetType();
-                Debug.Log(type.ToString());
+                DynamicGenericEventInvoker.Invoke();
             }
             else
             {

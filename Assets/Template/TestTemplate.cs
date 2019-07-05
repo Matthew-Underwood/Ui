@@ -8,14 +8,22 @@ namespace Project.Test
         public void Build()
         {
             CanvasBuilder canvasBuilder1 = (new CanvasBuilderFactory()).Create("Test canvas 1",1,0,0);
-            canvasBuilder1.Button.Text("Test Button 1").Position(0,-20).Size(100,20);
-            canvasBuilder1.Button.Text("Test Button 2").Position(0,-40).Size(100,20);
+            canvasBuilder1.Button.Text("Remove canvas").Position(0,-40).Size(100,20).Click("Project.Test.RemoveCanvasController","RemoveCanvases",1);
             
-            CanvasBuilder canvasBuilder2 = (new CanvasBuilderFactory()).Create("Test canvas 2",1,600,0);
+            CanvasBuilder canvasBuilder2 = (new CanvasBuilderFactory()).Create("Test canvas 2",2,600,0);
             canvasBuilder2.Button.Text("Test Button 3").Position(0,-20).Size(100,20);
-            canvasBuilder2.Button.Text("Test Button 4").Position(0,-40).Size(100,20).Click("Project.Test.TestBController","UnitPanel",null);
-            canvasBuilder2.Button.Text("Test Button 5").Position(0, -60).Size(100, 20).RemoveCanvases(2);
-            canvasBuilder2.Button.Text("Test Button 6").Position(0,-80).Size(100,20).Click("Project.Test.TestBController","TestHello",new object[] {"Matthew", "Graham","Underwood"});
+            canvasBuilder2.Button.Text("No args").Position(0,-40).Size(100,20)
+                .Click("Project.Test.TestBController","NoArgsMethod");
+            canvasBuilder2.Button.Text("1 args").Position(0,-60).Size(100,20)
+                .Click("Project.Test.TestBController","OneArgMethod","Sam" );
+            canvasBuilder2.Button.Text("2 args").Position(0,-80).Size(100,20)
+                .Click("Project.Test.TestBController","TwoArgsMethod","Gary" , 9.9);
+            canvasBuilder2.Button.Text("3 args").Position(0,-100).Size(100,20)
+                .Click("Project.Test.TestBController","ThreeArgsMethod","Jim" , 9.9, 2);
+            canvasBuilder2.Button.Text("4 args").Position(0,-120).Size(100,20)
+                .Click("Project.Test.TestBController","FourArgsMethod", 9.9,"John" ,9,"Smith");
+            
+            
         }
     }
 }

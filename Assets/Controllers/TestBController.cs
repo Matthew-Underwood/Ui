@@ -9,9 +9,25 @@ namespace Project.Test
         {
             Ui.Template("Project.Test.Test2Template");
         }
-        public void TestHello(string val1,string val2,string val3)
+        public void NoArgsMethod()
         {
-            Debug.Log("Hello " + val1 + " " + val2 + " " + val3 + ".");
+            Debug.Log("No args method invoked");
+        }
+        public void OneArgMethod(string val1)
+        {
+            Debug.Log("Hello " + val1);
+        }
+        public void TwoArgsMethod(string val1, double val2)
+        {
+            Debug.Log("Hello " + val1 + " " + val2.ToString());
+        }
+        public void ThreeArgsMethod(string val1, double val2, int val3)
+        {
+            Debug.Log("Hello " + val1 + " " + val2.ToString() + " " + val3.ToString());
+        }
+        public void FourArgsMethod(double val1,string val2, int val3, string val4)
+        {
+            Debug.Log("Hello " + val1.ToString() + " " + val2 + " " + val3.ToString() + " " + val4);
         }
     }
 }

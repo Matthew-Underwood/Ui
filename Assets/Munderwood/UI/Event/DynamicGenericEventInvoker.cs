@@ -1,6 +1,8 @@
 using System;
 using System.Reflection;
+using Munderwood.UI.Controller;
 using Munderwood.UI.Event.Click;
+using Project.Test;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,87 +10,94 @@ namespace Munderwood.UI.Event
 {
     public class DynamicGenericEventInvoker
     {
-        public object GenericInstance { get; set; }
-        public int ArgumentCount { get; set; }
-
-        public void GenericEventFactory(object[] arguments)
+        private UnityEvent _clickEvent;
+        private IEventOneArg _clickEventOneArg;
+        private IEventTwoArgs _clickEventTwoArgs;
+        private IEventThreeArgs _clickEventThreeArgs;
+        private IEventFourArgs _clickEventFourArgs;
+        private object[] arguments;
+        
+        public void AddListener (GameObject controller ,string methodName)
         {
-            ArgumentCount = arguments.Length;
-            Type genericType = GetGenericDefinitionTypeFromArguments();
-            Type[] typeArguments = GetTypeArguments(arguments);
-            Type  constructedGenericType =  genericType.MakeGenericType(typeArguments);
-            GenericInstance = Activator.CreateInstance(constructedGenericType);
+            Type controllerType = Type.GetType(controller.name);
+            MethodInfo controllerMethod = controllerType.GetMethod(methodName);
+            UnityEvent eventClick = new UnityEvent();
+            eventClick.AddListener(
+                () => { controllerMethod.Invoke(controller.GetComponent(controllerType), new object[] {});
+                });
+            arguments = new object[] {};
+            _clickEvent = eventClick;
         }
-    
+        
+        public void AddListener <T>(GameObject controller ,string methodName, T testVal)
+        {
+            Type controllerType = Type.GetType(controller.name);
+            MethodInfo controllerMethod = controllerType.GetMethod(methodName);
+            ClickEvent<T> eventClick = new ClickEvent<T>();
+            eventClick.AddListener(
+                (T a) => { controllerMethod.Invoke(controller.GetComponent(controllerType), new object[] {a});
+                });
+            arguments = new object[] {testVal};
+            _clickEventOneArg = eventClick;
+        }
+        
         public void AddListener <T,T2>(GameObject controller ,string methodName, T testVal, T2 testVal2)
         {
             Type controllerType = Type.GetType(controller.name);
             MethodInfo controllerMethod = controllerType.GetMethod(methodName);
-            switch (ArgumentCount)
-            {
-                case 1:
-                    EventInfo eventInfo = GenericInstance.GetType().GetEvent();
-                    UnityAction<int> action = (a) => controllerMethod.Invoke(controller.GetComponent(controllerType),new object[] {a});
-                    GenericInstance.GetType().GetMethod("AddListener").Invoke(GenericInstance, new object[] {});
-                    /*GenericInstance.GetType().GetMethod("AddListener").Invoke(GenericInstance, new object[] {
-                    (a) => controllerMethod.Invoke(controller.GetComponent(controllerType),new object[] {a}) });
-                    buttonComponent.clickEventTwoArgs.AddListener((a,b) => 
-                        controllerMethod.Invoke(controller.GetComponent(controllerType),
-                            new object[] {a,b}));*/
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-            }
+            ClickEvent<T,T2> eventClick = new ClickEvent<T, T2>();
+            eventClick.AddListener(
+                (T a, T2 b) => { controllerMethod.Invoke(controller.GetComponent(controllerType), new object[] {a, b});
+                });
+            arguments = new object[] {testVal,testVal2};
+            _clickEventTwoArgs = eventClick;
         }
         
-
-        protected Type GetGenericDefinitionTypeFromArguments()
+        public void AddListener <T,T2,T3>(GameObject controller ,string methodName, T testVal, T2 testVal2, T3 testVal3)
         {
-            Type genericType = null;
-            switch (ArgumentCount)
-            {
-                case 1:
-                    genericType = typeof(ClickEvent<>);
-                    break;
-                case 2:
-                    genericType = typeof(ClickEvent<,>);
-                    break;
-                case 3:
-                    genericType = typeof(ClickEvent<,,>);
-                    break;
-                case 4:
-                    genericType = typeof(ClickEvent<,,,>);
-                    break;
-            }
-            return genericType;
-        }
-
-        protected Type[] GetTypeArguments(object[] arguments)
-        {
-            Type[] typeArgs = null;
-            switch (ArgumentCount)
-            {
-                case 1:
-                    typeArgs = new[] {arguments[0].GetType()};
-                    break;
-                case 2:
-                    typeArgs = new[] {arguments[0].GetType(),arguments[1].GetType()};
-                    break;
-                case 3:
-                    typeArgs = new[] {arguments[0].GetType(),arguments[1].GetType(),arguments[2].GetType()};
-                    break;
-                case 4:
-                    typeArgs = new[] {arguments[0].GetType(),arguments[1].GetType(),arguments[2].GetType(),arguments[3].GetType()};
-                    break;
-            }
-
-            return typeArgs;
+            Type controllerType = Type.GetType(controller.name);
+            MethodInfo controllerMethod = controllerType.GetMethod(methodName);
+            ClickEvent<T,T2, T3> eventClick = new ClickEvent<T, T2, T3>();
+            eventClick.AddListener(
+                (T a, T2 b, T3 c) => { controllerMethod.Invoke(controller.GetComponent(controllerType), new object[] {a, b, c});
+                });
+            arguments = new object[] {testVal,testVal2,testVal3};
+            _clickEventThreeArgs = eventClick;
         }
         
+        public void AddListener <T,T2,T3,T4>(GameObject controller ,string methodName, T testVal, T2 testVal2, T3 testVal3, T4 testVal4)
+        {
+            Type controllerType = Type.GetType(controller.name);
+            MethodInfo controllerMethod = controllerType.GetMethod(methodName);
+            ClickEvent<T,T2,T3,T4> eventClick = new ClickEvent<T, T2, T3, T4>();
+            eventClick.AddListener(
+                (T a, T2 b, T3 c, T4 d) => { controllerMethod.Invoke(controller.GetComponent(controllerType), new object[] {a, b,c,d});
+            });
+            arguments = new object[] {testVal,testVal2,testVal3,testVal4};
+            _clickEventFourArgs = eventClick;
+        }
+
+        public void Invoke()
+        {
+            switch (arguments.Length)
+            {
+                case 0:
+                    _clickEvent.Invoke();
+                    break;
+                case 1:
+                    _clickEventOneArg.Invoke(arguments[0]);
+                    break;
+                case 2:
+                    _clickEventTwoArgs.Invoke(arguments[0],arguments[1]);
+                    break;
+                case 3:
+                    _clickEventThreeArgs.Invoke(arguments[0],arguments[1],arguments[2]);
+                    break;
+                case 4:
+                    _clickEventFourArgs.Invoke(arguments[0],arguments[1],arguments[2],arguments[3]);
+                    break;
+                
+            }
+        }
     }
-
 }

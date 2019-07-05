@@ -23,7 +23,7 @@ namespace Munderwood.UI.Canvas
             this.canvas = canvas;
             this.button = Object.Instantiate(Resources.Load<GameObject>("Button"));
             _buttonDynamicEventProcessor = new ButtonDynamicEventProcessor(new ClickActionFactory());
-            this.button.transform.parent = this.canvas.transform;
+            this.button.transform.SetParent(this.canvas.transform,false);
         }
         
         public CanvasButtonsBuilder Text (string text)
@@ -44,6 +44,21 @@ namespace Munderwood.UI.Canvas
             this.button.GetComponent<RectTransform>().sizeDelta = new Vector2(width,height);
             return this;
         }
+        
+        public CanvasButtonsBuilder Click (string controllerName,string methodName)
+        {
+            var controller = _controllerResolver.Resolve(controllerName);
+            _buttonDynamicEventProcessor.process(this.button,controller,methodName);
+            return this;
+        }
+        
+        public CanvasButtonsBuilder Click<T> (string controllerName,string methodName, T testVal)
+        {
+            var controller = _controllerResolver.Resolve(controllerName);
+            _buttonDynamicEventProcessor.process(this.button,controller,methodName,testVal);
+            return this;
+        }
+        
         public CanvasButtonsBuilder Click<T,T2> (string controllerName,string methodName, T testVal,T2 testVal2)
         {
             var controller = _controllerResolver.Resolve(controllerName);
@@ -51,17 +66,23 @@ namespace Munderwood.UI.Canvas
             return this;
         }
         
-        public CanvasButtonsBuilder Hover (string controllerName,string methodName)
+        public CanvasButtonsBuilder Click<T,T2,T3> (string controllerName,string methodName, T testVal,T2 testVal2,T3 testVal3)
         {
-            this.button.AddComponent<HoverableAction>();
+            var controller = _controllerResolver.Resolve(controllerName);
+            _buttonDynamicEventProcessor.process(this.button,controller,methodName,testVal,testVal2,testVal3);
             return this;
         }
         
-        public CanvasButtonsBuilder RemoveCanvases (int level)
+        public CanvasButtonsBuilder Click<T,T2,T3,T4> (string controllerName,string methodName, T testVal,T2 testVal2,T3 testVal3,T4 testVal4)
         {
-            var controllerRegistry = Ui.GetControllerRegistry();
-            this.button.AddComponent<RemoveCanvasAction>().Level = level;
-            this.button.GetComponent<RemoveCanvasAction>().removeEvent.AddListener(_controllerResolver.Resolve("Project.Test.RemoveCanvasController").GetComponent<RemoveCanvasController>().RemoveCanvases);
+            var controller = _controllerResolver.Resolve(controllerName);
+            _buttonDynamicEventProcessor.process(this.button,controller,methodName,testVal,testVal2,testVal3,testVal4);
+            return this;
+        }
+        
+        public CanvasButtonsBuilder Hover (string controllerName,string methodName)
+        {
+            this.button.AddComponent<HoverableAction>();
             return this;
         }
     }

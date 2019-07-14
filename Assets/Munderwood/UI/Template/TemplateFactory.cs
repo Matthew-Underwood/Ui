@@ -5,22 +5,24 @@ namespace Munderwood.UI.Template
 {
     public class TemplateFactory
     {
-        protected Dictionary<string, ITemplate> templates = new Dictionary<string, ITemplate>();
-        protected TypeResolver TypeResolver;
+        private readonly TemplateRegistry _templateRegistry;
+
+        public TemplateFactory(TemplateRegistry templateRegistry)
+        {
+            _templateRegistry = templateRegistry;
+        }
         
         public ITemplate CreateTemplate(string name)
         {
-            if (templates.ContainsKey(name))
+            if (_templateRegistry.Contains(name))
             {
-                return templates[name];
+                return _templateRegistry.Get(name);
             }
             
             TypeResolver typeResolver = new TypeResolver();
-            object[] arguments = {};
-            ITemplate template = (ITemplate) typeResolver.Resolve(name,arguments);
-            templates.Add(name, template);
+            ITemplate template = (ITemplate) typeResolver.Resolve(name,new object[] {});
+            _templateRegistry.Add(name, template);
             return template;
         }
     }
-
 }

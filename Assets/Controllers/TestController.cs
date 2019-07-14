@@ -12,5 +12,10 @@ namespace Project.Test
             //Ui.Template("Project.Test.TestTemplate");
             Template("Project.Test.TestTemplate");
         }
+
+        public void Hello()
+        {
+            Debug.Log("Hello again!");
+        }
     }
 }

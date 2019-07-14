@@ -8,7 +8,7 @@ namespace Project.Test
         public void Build(CanvasBuilderFactory canvasBuilderFactory)
         {
             CanvasBuilder canvasBuilder1 = canvasBuilderFactory.Create("Test canvas 1",1,0,0);
-            canvasBuilder1.Button.Text("Remove canvas").Position(0,-40).Size(100,20).Click("Project.Test.RemoveCanvasController","RemoveCanvases",1);
+            canvasBuilder1.Button.Text("Remove canvas").Position(0,-40).Size(100,20).Click("Project.Test.RemoveCanvasController","RemoveCanvases",2);
             
             CanvasBuilder canvasBuilder2 = canvasBuilderFactory.Create("Test canvas 2",2,600,0);
             canvasBuilder2.Button.Text("Test Button 3").Position(0,-20).Size(100,20);
@@ -22,8 +22,8 @@ namespace Project.Test
                 .Click("Project.Test.TestBController","ThreeArgsMethod","Jim" , 9.9, 2);
             canvasBuilder2.Button.Text("4 args").Position(0,-120).Size(100,20)
                 .Click("Project.Test.TestBController","FourArgsMethod", 9.9,"John" ,9,"Smith");
-            
-            
+            canvasBuilder2.Button.Text("Open canvas").Position(0,-140).Size(100,20)
+                .Click("Project.Test.TestBController","UnitPanel");
         }
     }
 }

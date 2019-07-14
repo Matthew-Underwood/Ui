@@ -10,12 +10,11 @@ public class Bootstrap : IBootstrap
     public Bootstrap()
     {
         ControllerRegistry controllerRegistry = new ControllerRegistry();
-        TemplateFactory templateFactory = new TemplateFactory();
+        TemplateRegistry templateRegistry = new TemplateRegistry();
         InvokerRegistry invokerRegistry = new InvokerRegistry();
         invokerRegistry.Add("BasicInvoker", new BasicTypeInvoker());
         invokerRegistry.Add("GameObjectInvoker", new GameObjectInvoker());
-        ControllerFactory controllerFactory = new ControllerFactory(controllerRegistry,templateFactory,invokerRegistry);
-        ControllerResolver controllerResolver = new ControllerResolver(controllerRegistry,controllerFactory);
+        ControllerFactory controllerFactory = new ControllerFactory(controllerRegistry,templateRegistry,invokerRegistry);
 
         Setup(new Bootstrapper(controllerRegistry,controllerFactory,invokerRegistry));
     }

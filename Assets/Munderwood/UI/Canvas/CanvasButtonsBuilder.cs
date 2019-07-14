@@ -16,11 +16,12 @@ namespace Munderwood.UI.Canvas
         private GameObject canvas;
         private GameObject button;
         private ButtonDynamicEventProcessor _buttonDynamicEventProcessor;
-        private ControllerResolver _controllerResolver = new ControllerResolver(Ui.GetControllerRegistry(),new ControllerFactory()); 
+        private ControllerResolver _controllerResolver; 
          
-        public CanvasButtonsBuilder(GameObject canvas) : base(canvas)
+        public CanvasButtonsBuilder(GameObject canvas,ControllerResolver controllerResolver) : base(canvas,controllerResolver)
         {
             this.canvas = canvas;
+            _controllerResolver = controllerResolver;
             this.button = Object.Instantiate(Resources.Load<GameObject>("Button"));
             _buttonDynamicEventProcessor = new ButtonDynamicEventProcessor(new ClickActionFactory());
             this.button.transform.SetParent(this.canvas.transform,false);

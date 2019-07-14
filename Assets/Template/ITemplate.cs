@@ -1,7 +1,9 @@
+using Munderwood.UI.Canvas;
+
 namespace Project.Test
 {
     public interface ITemplate
     {
-        void Build();
+        void Build(CanvasBuilderFactory canvasBuilderFactory);
     }
 }

@@ -5,11 +5,12 @@ using UnityEngine.Events;
 
 namespace Project.Test
 {
-    public class TestController : MonoBehaviour
+    public class TestController : BaseController
     {
         public void UnitPanel()
         {
-            Ui.Template("Project.Test.TestTemplate");
+            //Ui.Template("Project.Test.TestTemplate");
+            Template("Project.Test.TestTemplate");
         }
     }
 }

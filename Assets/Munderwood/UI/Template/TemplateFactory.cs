@@ -5,18 +5,18 @@ namespace Munderwood.UI.Template
 {
     public class TemplateFactory
     {
-        private readonly TemplateRegistry _templateRegistry;
+        private readonly Dictionary<string, ITemplate> _templateRegistry;
 
-        public TemplateFactory(TemplateRegistry templateRegistry)
+        public TemplateFactory(Dictionary<string, ITemplate> templateRegistry)
         {
             _templateRegistry = templateRegistry;
         }
         
         public ITemplate CreateTemplate(string name)
         {
-            if (_templateRegistry.Contains(name))
+            if (_templateRegistry.ContainsKey(name))
             {
-                return _templateRegistry.Get(name);
+                return _templateRegistry[name];
             }
             
             TypeResolver typeResolver = new TypeResolver();

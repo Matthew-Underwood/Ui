@@ -7,23 +7,22 @@ namespace Munderwood.UI.Canvas
 {
     public class CanvasBuilderFactory
     {
+        private readonly RegistryManager _registryManager;
         private readonly ControllerRegistry _controllerRegistry;
         private readonly TemplateRegistry _templateRegistry;
         private readonly TemplateFactory _templateFactory;
         private readonly InvokerRegistry _invokerRegistry;
         private readonly ControllerFactory _controllerFactory;
 
-        public CanvasBuilderFactory(ControllerRegistry controllerRegistry,TemplateRegistry templateRegistry,InvokerRegistry invokerRegistry)
+        public CanvasBuilderFactory(RegistryManager registryManager)
         {
-            _controllerRegistry = controllerRegistry;
-            _templateRegistry = templateRegistry;
-            _invokerRegistry = invokerRegistry;
+            _registryManager = registryManager;
         }
         
         public CanvasBuilder Create(string name,int level, int x,int y)
         {
-            ControllerFactory controllerFactory = new ControllerFactory(_controllerRegistry, _templateRegistry, _invokerRegistry);
-            ControllerResolver controllerResolver = new ControllerResolver(_controllerRegistry,controllerFactory);
+            ControllerFactory controllerFactory = new ControllerFactory(_registryManager);
+            ControllerResolver controllerResolver = new ControllerResolver(_registryManager.ControllerRegistry,controllerFactory);
             GameObject canvas = (new CanvasFactory()).Create(name,level,x,y);
             CanvasBuilder canvasBuilder = new CanvasBuilder(canvas,controllerResolver);
             return canvasBuilder;

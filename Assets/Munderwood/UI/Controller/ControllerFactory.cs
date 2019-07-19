@@ -1,5 +1,4 @@
 using Munderwood.UI.Canvas;
-using Munderwood.UI.Invoker;
 using Munderwood.UI.Template;
 using UnityEngine;
 
@@ -7,15 +6,11 @@ namespace Munderwood.UI.Controller
 {
     public class ControllerFactory
     {
-        private readonly ControllerRegistry _controllerRegistry;
-        private readonly TemplateRegistry _templateRegistry;
-        private readonly InvokerRegistry _invokerRegistry;
+        private readonly RegistryManager _registryManager;
 
-        public ControllerFactory(ControllerRegistry controllerRegistry,TemplateRegistry templateRegistry,InvokerRegistry invokerRegistry)
+        public ControllerFactory(RegistryManager registryManager)
         {
-            _controllerRegistry = controllerRegistry;
-            _templateRegistry = templateRegistry;
-            _invokerRegistry = invokerRegistry;
+            _registryManager = registryManager;
         }
         
         public GameObject CreateController(string name)
@@ -24,9 +19,9 @@ namespace Munderwood.UI.Controller
            controllerGameObject.name = name;
            controllerGameObject.AddComponent(System.Type.GetType(name));
            BaseController baseController = controllerGameObject.GetComponent<BaseController>();
-           baseController.TemplateFactory = new TemplateFactory(_templateRegistry);
-           baseController.InvokerRegistry = _invokerRegistry;
-           baseController.CanvasBuilderFactory = new CanvasBuilderFactory(_controllerRegistry,_templateRegistry,_invokerRegistry);
+           baseController.TemplateFactory = new TemplateFactory(_registryManager.TemplateRegistry);
+           baseController.InvokerRegistry = _registryManager.InvokerRegistry;
+           baseController.CanvasBuilderFactory = new CanvasBuilderFactory(_registryManager);
            return controllerGameObject;
         }
     }

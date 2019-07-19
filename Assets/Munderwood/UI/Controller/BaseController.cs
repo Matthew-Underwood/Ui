@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Munderwood.UI.Canvas;
 using Munderwood.UI.Invoker;
 using Munderwood.UI.Template;
@@ -8,7 +9,7 @@ namespace Munderwood.UI.Controller
     public class BaseController : MonoBehaviour
     {
         protected TemplateFactory templateFactory;
-        protected InvokerRegistry invokerRegistry;
+        protected Dictionary<string, ITypeInvoker> invokerRegistry;
         protected CanvasBuilderFactory canvasBuilderFactory;
 
         public TemplateFactory TemplateFactory
@@ -17,7 +18,7 @@ namespace Munderwood.UI.Controller
             set => templateFactory = value;
         }
         
-        public InvokerRegistry InvokerRegistry
+        public Dictionary<string, ITypeInvoker> InvokerRegistry
         {
             get => invokerRegistry;
             set => invokerRegistry = value;
@@ -32,7 +33,7 @@ namespace Munderwood.UI.Controller
         protected void Template (string name)
         {
             var template = TemplateFactory.CreateTemplate(name);
-            InvokerRegistry.Get("BasicInvoker").CallMethod(template, "Build",new object[]{CanvasBuilderFactory});
+            InvokerRegistry["BasicInvoker"].CallMethod(template, "Build",new object[]{CanvasBuilderFactory});
         }
     }
 }

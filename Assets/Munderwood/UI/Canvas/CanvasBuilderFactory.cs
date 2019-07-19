@@ -8,10 +8,7 @@ namespace Munderwood.UI.Canvas
     public class CanvasBuilderFactory
     {
         private readonly RegistryManager _registryManager;
-        private readonly ControllerRegistry _controllerRegistry;
-        private readonly TemplateRegistry _templateRegistry;
         private readonly TemplateFactory _templateFactory;
-        private readonly InvokerRegistry _invokerRegistry;
         private readonly ControllerFactory _controllerFactory;
 
         public CanvasBuilderFactory(RegistryManager registryManager)

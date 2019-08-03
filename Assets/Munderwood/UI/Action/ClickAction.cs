@@ -6,9 +6,14 @@ using UnityEngine.EventSystems;
 
 namespace Munderwood.UI.Action
 {
-    public class ClickAction : MonoBehaviour, IPointerUpHandler
+    public class ClickAction : MonoBehaviour, IPointerUpHandler, IEventInvoker
     {
-        public DynamicGenericEventInvoker DynamicGenericEventInvoker;
+        private DynamicGenericEventInvoker DynamicGenericEventInvoker;
+
+        public void SetEventInvoker (DynamicGenericEventInvoker eventInvoker)
+        {
+            DynamicGenericEventInvoker = eventInvoker;
+        }
 
         public void OnPointerUp(PointerEventData eventData)
         {

@@ -24,5 +24,14 @@ namespace Munderwood.UI.Canvas
             CanvasBuilder canvasBuilder = new CanvasBuilder(canvas,controllerResolver);
             return canvasBuilder;
         }
+        
+        public CanvasBuilder CreateRelative(string name,int level, int x,int y)
+        {
+            ControllerFactory controllerFactory = new ControllerFactory(_registryManager);
+            ControllerResolver controllerResolver = new ControllerResolver(_registryManager.ControllerRegistry,controllerFactory);
+            GameObject canvas = (new CanvasFactory()).CreateRelative(name,level,x,y);
+            CanvasBuilder canvasBuilder = new CanvasBuilder(canvas,controllerResolver);
+            return canvasBuilder;
+        }
     }
 }

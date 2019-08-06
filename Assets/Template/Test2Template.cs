@@ -1,11 +1,11 @@
 using Munderwood.UI.Canvas;
-using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Project.Test
 {
-    public class Test2Template : ITemplate
+    public class Test2Template : ITemplateEventData
     {
-        public void Build(CanvasBuilderFactory canvasBuilderFactory)
+        public void Build(CanvasBuilderFactory canvasBuilderFactory,PointerEventData eventData)
         {
             CanvasBuilder canvasBuilder1 = canvasBuilderFactory.CreateRelative("Test canvas 3",2,625,-431 );
             canvasBuilder1.Button.Text("Hello")

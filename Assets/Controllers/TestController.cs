@@ -15,7 +15,18 @@ namespace Project.Test
 
         public void Hello()
         {
+            Debug.Log("Hello!");
+        }
+        
+        public void HelloAgain()
+        {
             Debug.Log("Hello again!");
         }
+        
+        public void HoverGreeting(string firstName, string surname)
+        {
+            Debug.Log("My name is " + firstName + " " + surname);
+        }
+        
     }
 }

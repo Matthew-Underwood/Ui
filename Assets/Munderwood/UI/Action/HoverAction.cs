@@ -1,5 +1,6 @@
 ﻿using System;
 using Boo.Lang.Runtime;
+using Munderwood.UI.Controller;
 using Munderwood.UI.Event;
 using UnityEditor;
 using UnityEditor.Experimental.TerrainAPI;
@@ -11,11 +12,6 @@ namespace Munderwood.UI.Action
     public class HoverAction : MonoBehaviour, IPointerEnterHandler, IEventInvoker
     {
         private DynamicGenericEventInvoker DynamicGenericEventInvoker;
-        private Vector2 mousePos;
-        private Vector2 anchoredPos;
-        private Vector2 anchoredPos2;
-        private Vector2 localRectPos;
-
         public void SetEventInvoker (DynamicGenericEventInvoker eventInvoker)
         {
             DynamicGenericEventInvoker = eventInvoker;
@@ -23,6 +19,11 @@ namespace Munderwood.UI.Action
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            
+            DynamicGenericEventInvoker eventTest = new DynamicGenericEventInvoker();
+            GameObject controller = GameObject.Find("Project.Test.TestBController"); 
+            eventTest.AddListener(controller,"SetPointerEventData",eventData);
+            eventTest.Invoke();
             if (DynamicGenericEventInvoker != null)
             {
                 DynamicGenericEventInvoker.Invoke();
@@ -33,7 +34,7 @@ namespace Munderwood.UI.Action
             }
         }
 
-        public void Update()
+        /*public void Update()
         {
             mousePos = Input.mousePosition;
 
@@ -53,7 +54,7 @@ namespace Munderwood.UI.Action
             GUI.Label(new Rect(10, 520, 200, 20),"Anch2: " + anchoredPos2.ToString());
             GUI.Label(new Rect(10, 540, 200, 20),"Local: " + localRectPos.ToString());
             GUI.Label(new Rect(10, 560, 200, 20),"Con: " + convertedPos.ToString());
-        }
+        }*/
     }
 }
 

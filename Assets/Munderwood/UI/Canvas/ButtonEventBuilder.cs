@@ -10,12 +10,14 @@ namespace Munderwood.UI.Canvas
         private readonly GameObject button;
         private readonly ButtonActionFactory buttonActionFactory;
         private readonly ButtonDynamicEventProcessor buttonDynamicEventProcessor;
+        private readonly ButtonDynamicEventHoverProcessor buttonDynamicEventHoverProcessor;
 
         public ButtonEventBuilder(GameObject canvas,ControllerResolver controllerResolver,GameObject button) : base(canvas,controllerResolver)
         {
             this.button = button;
             this.buttonActionFactory = new ButtonActionFactory(button);
             this.buttonDynamicEventProcessor = new ButtonDynamicEventProcessor();
+            this.buttonDynamicEventHoverProcessor = new ButtonDynamicEventHoverProcessor();
         }
         public ButtonEventBuilder Click (string controllerName,string methodName)
         {
@@ -62,7 +64,7 @@ namespace Munderwood.UI.Canvas
         {
             var controller = this.controllerResolver.Resolve(controllerName);
             
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName);
+            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName);
             return this;
         }
         
@@ -70,7 +72,7 @@ namespace Munderwood.UI.Canvas
         {
             var controller = this.controllerResolver.Resolve(controllerName);
             
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal);
+            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal);
             return this;
         }
         
@@ -78,7 +80,7 @@ namespace Munderwood.UI.Canvas
         {
             var controller = this.controllerResolver.Resolve(controllerName);
             
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2);
+            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2);
             return this;
         }
         
@@ -86,7 +88,7 @@ namespace Munderwood.UI.Canvas
         {
             var controller = this.controllerResolver.Resolve(controllerName);
             
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2,testVal3);
+            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2,testVal3);
             return this;
         }
         
@@ -94,7 +96,7 @@ namespace Munderwood.UI.Canvas
         {
             var controller = this.controllerResolver.Resolve(controllerName);
             
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2,testVal3,testVal4);
+            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2,testVal3,testVal4);
             return this;
         }
     }

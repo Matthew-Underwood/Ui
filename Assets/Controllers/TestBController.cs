@@ -8,6 +8,7 @@ namespace Project.Test
     {
         public void UnitPanel()
         {
+            
             Debug.Log("Hello");
             Template("Project.Test.Test2Template");
         }

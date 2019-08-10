@@ -2,6 +2,7 @@ namespace Munderwood.UI.Event
 {
     public interface IEventInvoker
     {
-        void SetEventInvoker(DynamicGenericEventInvoker eventInvoker);
+        void SetEventInvoker(EventManager eventManager);
+        void SetPointerDataEventInvoker(PointerDataEventManager pointerDataEventManager);
     }
 }

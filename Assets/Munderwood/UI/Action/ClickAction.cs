@@ -8,18 +8,26 @@ namespace Munderwood.UI.Action
 {
     public class ClickAction : MonoBehaviour, IPointerUpHandler, IEventInvoker
     {
-        private DynamicGenericEventInvoker DynamicGenericEventInvoker;
-
-        public void SetEventInvoker (DynamicGenericEventInvoker eventInvoker)
+        private EventManager _eventManager;
+        private PointerDataEventManager _pointerDataEventManager;
+        
+        public void SetEventInvoker(EventManager eventManager)
         {
-            DynamicGenericEventInvoker = eventInvoker;
+            _eventManager = eventManager;
         }
-
+        public void SetPointerDataEventInvoker(PointerDataEventManager pointerDataEventManager)
+        {
+            _pointerDataEventManager = pointerDataEventManager;
+        }
+        
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (DynamicGenericEventInvoker != null)
+            if (_eventManager != null && _pointerDataEventManager != null)
             {
-                DynamicGenericEventInvoker.Invoke();
+                _eventManager.Invoke();
+                _pointerDataEventManager.AddListener(eventData);
+                _pointerDataEventManager.AssignValues(eventData);
+                _pointerDataEventManager.Invoke();
             }
             else
             {

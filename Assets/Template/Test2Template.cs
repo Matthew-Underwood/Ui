@@ -3,9 +3,9 @@ using UnityEngine.EventSystems;
 
 namespace Project.Test
 {
-    public class Test2Template : ITemplateEventData
+    public class Test2Template : ITemplate
     {
-        public void Build(CanvasBuilderFactory canvasBuilderFactory,PointerEventData eventData)
+        public void Build(CanvasBuilderFactory canvasBuilderFactory)
         {
             CanvasBuilder canvasBuilder1 = canvasBuilderFactory.CreateRelative("Test canvas 3",2,625,-431 );
             canvasBuilder1.Button.Text("Hello")

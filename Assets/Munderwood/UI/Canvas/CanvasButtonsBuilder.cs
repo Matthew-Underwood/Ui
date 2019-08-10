@@ -14,7 +14,6 @@ namespace Munderwood.UI.Canvas
     public class CanvasButtonsBuilder : CanvasBuilder
     {
         private readonly GameObject button;
-        private ButtonDynamicEventProcessor _buttonDynamicEventProcessor;
 
         public CanvasButtonsBuilder(GameObject canvas,ControllerResolver controllerResolver) : base(canvas,controllerResolver)
         {

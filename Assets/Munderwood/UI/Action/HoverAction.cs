@@ -11,22 +11,28 @@ namespace Munderwood.UI.Action
 {
     public class HoverAction : MonoBehaviour, IPointerEnterHandler, IEventInvoker
     {
-        private DynamicGenericEventInvoker DynamicGenericEventInvoker;
-        public void SetEventInvoker (DynamicGenericEventInvoker eventInvoker)
+        private EventManager _eventManager;
+        private PointerDataEventManager _pointerDataEventManager;
+        
+        public void SetEventInvoker(EventManager eventManager)
         {
-            DynamicGenericEventInvoker = eventInvoker;
+            _eventManager = eventManager;
         }
-
+        
+        public void SetPointerDataEventInvoker(PointerDataEventManager pointerDataEventManager)
+        {
+            _pointerDataEventManager = pointerDataEventManager;
+        }
+        
         public void OnPointerEnter(PointerEventData eventData)
         {
-            
-            DynamicGenericEventInvoker eventTest = new DynamicGenericEventInvoker();
-            GameObject controller = GameObject.Find("Project.Test.TestBController"); 
-            eventTest.AddListener(controller,"SetPointerEventData",eventData);
-            eventTest.Invoke();
-            if (DynamicGenericEventInvoker != null)
+            Debug.Log("Hovered");
+            if (_eventManager != null && _pointerDataEventManager != null)
             {
-                DynamicGenericEventInvoker.Invoke();
+                _pointerDataEventManager.AddListener(eventData);
+                _pointerDataEventManager.AssignValues(eventData);
+                _pointerDataEventManager.Invoke();
+                _eventManager.Invoke();
             }
             else
             {
@@ -55,6 +61,7 @@ namespace Munderwood.UI.Action
             GUI.Label(new Rect(10, 540, 200, 20),"Local: " + localRectPos.ToString());
             GUI.Label(new Rect(10, 560, 200, 20),"Con: " + convertedPos.ToString());
         }*/
+        
     }
 }
 

@@ -9,94 +9,138 @@ namespace Munderwood.UI.Canvas
     {
         private readonly GameObject button;
         private readonly ButtonActionFactory buttonActionFactory;
-        private readonly ButtonDynamicEventProcessor buttonDynamicEventProcessor;
-        private readonly ButtonDynamicEventHoverProcessor buttonDynamicEventHoverProcessor;
 
         public ButtonEventBuilder(GameObject canvas,ControllerResolver controllerResolver,GameObject button) : base(canvas,controllerResolver)
         {
             this.button = button;
             this.buttonActionFactory = new ButtonActionFactory(button);
-            this.buttonDynamicEventProcessor = new ButtonDynamicEventProcessor();
-            this.buttonDynamicEventHoverProcessor = new ButtonDynamicEventHoverProcessor();
+            
         }
         public ButtonEventBuilder Click (string controllerName,string methodName)
         {
-            
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateClickAction(),controller,methodName);
+            IEventInvoker button = buttonActionFactory.CreateClickAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener();
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Click<T> (string controllerName,string methodName, T testVal)
+        public ButtonEventBuilder Click<T> (string controllerName,string methodName, T val)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateClickAction(),controller,methodName,testVal);
+            IEventInvoker button = buttonActionFactory.CreateClickAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener(val);
+            eventManager.AssignValues(val);
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Click<T,T2> (string controllerName,string methodName, T testVal,T2 testVal2)
+        public ButtonEventBuilder Click<T,T2> (string controllerName,string methodName, T val,T2 val2)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateClickAction(),controller,methodName,testVal,testVal2);
+            IEventInvoker button = buttonActionFactory.CreateClickAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener(val,val2);
+            eventManager.AssignValues(val,val2);
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Click<T,T2,T3> (string controllerName,string methodName, T testVal,T2 testVal2,T3 testVal3)
+        public ButtonEventBuilder Click<T,T2,T3> (string controllerName,string methodName, T val,T2 val2,T3 val3)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateClickAction(),controller,methodName,testVal,testVal2,testVal3);
+            IEventInvoker button = buttonActionFactory.CreateClickAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener(val,val2,val3);
+            eventManager.AssignValues(val,val2,val3);
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Click<T,T2,T3,T4> (string controllerName,string methodName, T testVal,T2 testVal2,T3 testVal3,T4 testVal4)
+        public ButtonEventBuilder Click<T,T2,T3,T4> (string controllerName,string methodName, T val,T2 val2,T3 val3,T4 val4)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventProcessor.process(buttonActionFactory.CreateClickAction(),controller,methodName,testVal,testVal2,testVal3,testVal4);
+            IEventInvoker button = buttonActionFactory.CreateClickAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener(val,val2,val3,val4);
+            eventManager.AssignValues(val,val2,val3,val4);
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
         public ButtonEventBuilder Hover (string controllerName,string methodName)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName);
+            IEventInvoker button = buttonActionFactory.CreateHoverAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener();
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Hover<T> (string controllerName,string methodName, T testVal)
+        public ButtonEventBuilder Hover<T> (string controllerName,string methodName, T val)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal);
+            IEventInvoker button = buttonActionFactory.CreateHoverAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener(val);
+            eventManager.AssignValues(val);
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Hover<T,T2> (string controllerName,string methodName, T testVal,T2 testVal2)
+        public ButtonEventBuilder Hover<T,T2> (string controllerName,string methodName, T val,T2 val2)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2);
+            IEventInvoker button = buttonActionFactory.CreateHoverAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener(val,val2);
+            eventManager.AssignValues(val,val2);
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Hover<T,T2,T3> (string controllerName,string methodName, T testVal,T2 testVal2,T3 testVal3)
+        public ButtonEventBuilder Hover<T,T2,T3> (string controllerName,string methodName, T val,T2 val2,T3 val3)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2,testVal3);
+            IEventInvoker button = buttonActionFactory.CreateHoverAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener(val,val2,val3);
+            eventManager.AssignValues(val,val2,val3);
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Hover<T,T2,T3,T4> (string controllerName,string methodName, T testVal,T2 testVal2,T3 testVal3,T4 testVal4)
+        public ButtonEventBuilder Hover<T,T2,T3,T4> (string controllerName,string methodName, T val,T2 val2,T3 val3,T4 val4)
         {
             var controller = this.controllerResolver.Resolve(controllerName);
-            
-            buttonDynamicEventHoverProcessor.process(buttonActionFactory.CreateHoverAction(),controller,methodName,testVal,testVal2,testVal3,testVal4);
+            IEventInvoker button = buttonActionFactory.CreateHoverAction();
+            EventManager eventManager = new EventManager(controller,methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,"SetPointerEventData");
+            eventManager.AddListener(val,val2,val3,val4);
+            eventManager.AssignValues(val,val2,val3,val4);
+            button.SetEventInvoker(eventManager);
+            button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
     }

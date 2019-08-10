@@ -8,8 +8,4 @@ namespace Project.Test
         void Build(CanvasBuilderFactory canvasBuilderFactory);
     }
     
-    public interface ITemplateEventData
-    {
-        void Build(CanvasBuilderFactory canvasBuilderFactory,PointerEventData eventData);
-    }
 }

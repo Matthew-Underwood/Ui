@@ -6,12 +6,10 @@ namespace Munderwood.UI.Invoker
 {
     public class BasicTypeInvoker : ITypeInvoker
     {
-        public void CallMethod(object resolvedObject , string name)
+        public void CallMethod(object resolvedType, string name, object[] parameters)
         {
-            MethodInfo theMethod = resolvedObject.GetType().GetMethod(name);
-            //TODO inplement passing of parameters
-            theMethod.Invoke(resolvedObject, null);
+            MethodInfo theMethod = resolvedType.GetType().GetMethod(name);
+            theMethod.Invoke(resolvedType, parameters);
         }
-
     }
 }

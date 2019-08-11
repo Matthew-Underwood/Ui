@@ -1,12 +1,20 @@
 using Munderwood.Test;
-using UnityEngine;
 using Munderwood.UI;
-public class Bootstrap : MonoBehaviour
+using Munderwood.UI.Boostrapper;
+using Munderwood.UI.Controller;
+
+public class Bootstrap : IBootstrap 
 {
-    private void Start()
+    public Bootstrap()
     {
-        UiService uiService = new UiService();
-        uiService.Build();
-        Ui.AddController("Project.Test.TestController", "UnitPanel");
+        RegistryManager registryManager = (new RegistryManagerFactory()).Create();
+        ControllerFactory controllerFactory = new ControllerFactory(registryManager);
+        Setup(new Bootstrapper(registryManager,controllerFactory));
     }
+
+    public void Setup (Bootstrapper bootstrapper)
+    {
+        bootstrapper.AddController("Project.Test.TestController", "UnitPanel",null);
+    }
+    
 }

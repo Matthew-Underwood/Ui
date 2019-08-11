@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Munderwood.UI;
+using Munderwood.UI.Controller;
 using UnityEngine;
 
 namespace Project.Test
 {
-    public class RemoveCanvasController : MonoBehaviour
+    public class RemoveCanvasController : BaseController
     {
         public void RemoveCanvases(int level)
         {

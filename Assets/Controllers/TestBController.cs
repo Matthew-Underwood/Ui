@@ -1,13 +1,16 @@
 using Munderwood.UI;
+using Munderwood.UI.Controller;
 using UnityEngine;
 
 namespace Project.Test
 {
-    public class TestBController : MonoBehaviour
+    public class TestBController : BaseController
     {
         public void UnitPanel()
         {
-            Ui.Template("Project.Test.Test2Template");
+            
+            Debug.Log("Hello");
+            Template("Project.Test.Test2Template");
         }
         public void NoArgsMethod()
         {

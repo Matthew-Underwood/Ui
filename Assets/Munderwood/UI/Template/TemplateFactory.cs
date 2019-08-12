@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Project.Test;
+using UnityEngine.EventSystems;
 
 namespace Munderwood.UI.Template
 {
@@ -21,6 +22,7 @@ namespace Munderwood.UI.Template
             
             TypeResolver typeResolver = new TypeResolver();
             ITemplate template = (ITemplate) typeResolver.Resolve(name,new object[] {});
+            
             _templateRegistry.Add(name, template);
             return template;
         }

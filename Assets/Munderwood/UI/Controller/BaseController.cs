@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Munderwood.Test.Input;
 using Munderwood.UI.Canvas;
 using Munderwood.UI.Invoker;
 using Munderwood.UI.Template;
@@ -7,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace Munderwood.UI.Controller
 {
-    public class BaseController : MonoBehaviour
+    public class BaseController : MonoBehaviour, IPointerData
     {
         protected TemplateFactory templateFactory;
         protected Dictionary<string, ITypeInvoker> invokerRegistry;
@@ -37,16 +38,10 @@ namespace Munderwood.UI.Controller
             this.pointerEventData = pointerEventData;
         }
 
-        protected void Template (string name)
+        protected void Template (string name,object values = null)
         {
             var template = TemplateFactory.CreateTemplate(name);
-            InvokerRegistry["BasicInvoker"].CallMethod(template, "Build",new object[]{CanvasBuilderFactory});
-        }
-        
-        protected void TemplateWithEventData (string name)
-        {
-            var template = TemplateFactory.CreateTemplate(name);
-            InvokerRegistry["BasicInvoker"].CallMethod(template, "Build",new object[]{CanvasBuilderFactory,pointerEventData});
+            InvokerRegistry["BasicInvoker"].CallMethod(template, "Build",new object[]{CanvasBuilderFactory,this.pointerEventData,values});
         }
     }
 }

@@ -32,5 +32,14 @@ namespace Project.Test
         {
             Debug.Log("Hello " + val1.ToString() + " " + val2 + " " + val3.ToString() + " " + val4);
         }
+        
+        public void In(string name, int age)
+        {
+            Debug.Log("In " + name + " "  + age.ToString());
+        }
+        public void Out(string name, int age)
+        {
+            Debug.Log("Out " + name + " "  + age.ToString());
+        }
     }
 }

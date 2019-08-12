@@ -16,9 +16,14 @@ namespace Munderwood.UI.Action
             return _button.AddComponent<ClickAction>();
         }
         
-        public IEventInvoker CreateHoverAction()
+        public IEventInvoker CreateHoverInAction()
         {
-            return _button.AddComponent<HoverAction>();
+            return _button.AddComponent<HoverInAction>();
+        }
+        
+        public IEventInvoker CreateHoverOutAction()
+        {
+            return _button.AddComponent<HoverOutAction>();
         }
     }
 }

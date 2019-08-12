@@ -9,8 +9,10 @@ namespace Project.Test
     {
         public void UnitPanel()
         {
+            string firstname = "Matthew";
+            string surname = "Underwood";
             //Ui.Template("Project.Test.TestTemplate");
-            Template("Project.Test.TestTemplate");
+            Template("Project.Test.TestTemplate",new object[] {firstname,surname});
         }
 
         public void Hello()

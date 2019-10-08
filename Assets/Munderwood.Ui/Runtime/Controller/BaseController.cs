@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using Munderwood.Test.Input;
-using Munderwood.UI.Canvas;
-using Munderwood.UI.Invoker;
-using Munderwood.UI.Template;
+using Munderwood.Ui.Canvas;
+using Munderwood.Ui.Invoker;
+using Munderwood.Ui.Template;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Munderwood.UI.Controller
+namespace Munderwood.Ui.Controller
 {
     public class BaseController : MonoBehaviour, IPointerData
     {

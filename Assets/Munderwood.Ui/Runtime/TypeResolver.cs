@@ -1,6 +1,6 @@
 using System;
 
-namespace Munderwood.UI
+namespace Munderwood.Ui
 {
     public class TypeResolver
     {

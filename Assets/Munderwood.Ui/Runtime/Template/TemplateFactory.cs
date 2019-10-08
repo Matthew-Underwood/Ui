@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Project.Test;
 using UnityEngine.EventSystems;
 
-namespace Munderwood.UI.Template
+namespace Munderwood.Ui.Template
 {
     public class TemplateFactory
     {

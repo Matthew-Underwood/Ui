@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Munderwood.UI.Canvas
+namespace Munderwood.Ui.Canvas
 {
     public class CanvasDimensionsTransformer
     {

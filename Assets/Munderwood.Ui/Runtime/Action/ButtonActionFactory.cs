@@ -1,7 +1,7 @@
 using Munderwood.Events;
 using UnityEngine;
 
-namespace Munderwood.UI.Action
+namespace Munderwood.Ui.Action
 {
     public class ButtonActionFactory
     {

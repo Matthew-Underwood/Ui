@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Munderwood.UI.Controller
+namespace Munderwood.Ui.Controller
 {
     public class ControllerResolver
     {

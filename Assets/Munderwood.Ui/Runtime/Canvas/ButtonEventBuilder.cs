@@ -1,10 +1,10 @@
 using System;
 using Munderwood.Events;
-using Munderwood.UI.Action;
-using Munderwood.UI.Controller;
+using Munderwood.Ui.Action;
+using Munderwood.Ui.Controller;
 using UnityEngine;
 
-namespace Munderwood.UI.Canvas
+namespace Munderwood.Ui.Canvas
 {
     public class ButtonEventBuilder : CanvasBuilder
     {

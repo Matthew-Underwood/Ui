@@ -1,9 +1,9 @@
 using System;
 using System.Reflection;
-using Munderwood.UI.Invoker;
+using Munderwood.Ui.Invoker;
 using UnityEngine;
 
-namespace Munderwood.UI
+namespace Munderwood.Ui
 {
     public class GameObjectInvoker : ITypeInvoker
     {

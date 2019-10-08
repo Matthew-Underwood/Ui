@@ -1,17 +1,14 @@
-using Munderwood.UI.Action;
-using Munderwood.UI.Controller;
-
-namespace Munderwood.UI.Boostrapper
+namespace Munderwood.Ui.Controller
 {
-    public class Bootstrapper
+    public class BootStrap
     {
         private readonly RegistryManager _registryManager;
         private readonly ControllerFactory _controllerFactory;
 
-        public Bootstrapper(
+        public BootStrap (
             RegistryManager registryManager,
             ControllerFactory controllerFactory
-            )
+        )
         {
             _registryManager = registryManager;
             _controllerFactory = controllerFactory;

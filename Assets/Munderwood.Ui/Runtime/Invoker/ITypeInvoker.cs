@@ -1,4 +1,4 @@
-namespace Munderwood.UI.Invoker
+namespace Munderwood.Ui.Invoker
 {
     public interface ITypeInvoker
     {

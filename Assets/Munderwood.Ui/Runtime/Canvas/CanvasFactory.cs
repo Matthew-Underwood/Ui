@@ -1,9 +1,8 @@
-using Munderwood.Test.Transform;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
 
-namespace Munderwood.UI.Canvas
+namespace Munderwood.Ui.Canvas
 {
     public class CanvasFactory
     {

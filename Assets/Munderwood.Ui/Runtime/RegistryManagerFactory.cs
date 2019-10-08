@@ -1,6 +1,6 @@
-using Munderwood.UI.Invoker;
+using Munderwood.Ui.Invoker;
 
-namespace Munderwood.UI
+namespace Munderwood.Ui
 {
     public class RegistryManagerFactory
     {

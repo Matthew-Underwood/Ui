@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using UnityEngine;
 
-namespace Munderwood.UI.Invoker
+namespace Munderwood.Ui.Invoker
 {
     public class BasicTypeInvoker : ITypeInvoker
     {

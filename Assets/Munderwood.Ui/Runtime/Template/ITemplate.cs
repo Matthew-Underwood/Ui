@@ -1,5 +1,5 @@
 using JetBrains.Annotations;
-using Munderwood.UI.Canvas;
+using Munderwood.Ui.Canvas;
 using UnityEngine.EventSystems;
 
 namespace Project.Test

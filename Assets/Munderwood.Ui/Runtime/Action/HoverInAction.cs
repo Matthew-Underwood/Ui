@@ -1,11 +1,8 @@
-﻿using System;
-using Boo.Lang.Runtime;
-using Munderwood.Events;
-using Munderwood.Test.Transform;
+﻿using Munderwood.Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Munderwood.UI.Action
+namespace Munderwood.Ui.Action
 {
     public class HoverInAction : MonoBehaviour, IPointerEnterHandler, IEventInvoker
     {

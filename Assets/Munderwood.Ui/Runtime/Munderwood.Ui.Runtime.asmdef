@@ -1,16 +1,15 @@
 {
     "name": "Munderwood.Ui.Runtime",
     "references": [
-        "GUID:29fdf1d8466e6fc409f38b481a638f5a"
+        "GUID:d4c7ea670c254ddf8d1d255887e2035d"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,
-    "overrideReferences": true,
+    "overrideReferences": false,
     "precompiledReferences": [
-        "JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll",
-        ""
+        "JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

@@ -3,7 +3,7 @@ using Munderwood.Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Munderwood.UI.Action
+namespace Munderwood.Ui.Action
 {
     public class ClickAction : MonoBehaviour, IPointerUpHandler, IEventInvoker
     {

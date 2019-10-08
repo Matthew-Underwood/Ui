@@ -1,8 +1,8 @@
-using Munderwood.UI.Canvas;
-using Munderwood.UI.Template;
+using Munderwood.Ui.Canvas;
+using Munderwood.Ui.Template;
 using UnityEngine;
 
-namespace Munderwood.UI.Controller
+namespace Munderwood.Ui.Controller
 {
     public class ControllerFactory
     {

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Munderwood.UI.Invoker;
+using Munderwood.Ui.Invoker;
 using Project.Test;
 using UnityEngine;
 
-namespace Munderwood.UI
+namespace Munderwood.Ui
 {
     public class RegistryManager
     {

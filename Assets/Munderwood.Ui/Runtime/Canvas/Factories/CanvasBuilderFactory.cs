@@ -1,9 +1,9 @@
+using Munderwood.Ui.Canvas.Builder;
 using Munderwood.Ui.Controller;
 using Munderwood.Ui.Template;
-using Munderwood.Ui.Invoker;
 using UnityEngine;
 
-namespace Munderwood.Ui.Canvas
+namespace Munderwood.Ui.Canvas.Factories
 {
     public class CanvasBuilderFactory
     {

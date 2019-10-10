@@ -2,7 +2,7 @@ using Munderwood.Ui.Controller;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Munderwood.Ui.Canvas
+namespace Munderwood.Ui.Canvas.Builder
 {
     public class CanvasLayoutBuilder : CanvasBuilder
     {

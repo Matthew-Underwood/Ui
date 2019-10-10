@@ -1,7 +1,8 @@
+using Munderwood.Ui.Button;
 using Munderwood.Ui.Controller;
 using UnityEngine;
 
-namespace Munderwood.Ui.Canvas
+namespace Munderwood.Ui.Canvas.Builder
 {
     public class CanvasBuilder
     {

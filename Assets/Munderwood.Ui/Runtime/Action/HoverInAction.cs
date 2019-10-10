@@ -33,6 +33,7 @@ namespace Munderwood.Ui.Action
             }
             else
             {
+                // TODO change exception 
                 //throw new RuntimeException("No event setup with this " + this.name);
             }
         }

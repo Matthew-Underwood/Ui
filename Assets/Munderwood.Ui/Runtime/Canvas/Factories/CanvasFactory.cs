@@ -38,7 +38,7 @@ namespace Munderwood.Ui.Canvas
             rectTransform.anchorMin = new Vector2(0,1);
             rectTransform.anchorMax = new Vector2(0,1);
             createdCanvas.GetComponent<CanvasMeta>().Level = level;
-            rectTransform.anchoredPosition = CoordinateTransform.InverseYCoordinate(position);
+            //rectTransform.anchoredPosition = CoordinateTransform.InverseYCoordinate(position);
             rectTransform.pivot = new Vector2(0, 1);
 
             if (parentCanvas != null)

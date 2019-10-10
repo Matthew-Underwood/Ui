@@ -7,7 +7,12 @@ namespace Project.Test
     {
         public void Test()
         {
-            Debug.Log("Test");
+            Template("Munderwood.Ui.Template.TestTemplate");
+        }
+        
+        public void Hello()
+        {
+            Debug.Log("Hello there");
         }
     }
 }

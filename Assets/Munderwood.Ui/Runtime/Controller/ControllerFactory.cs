@@ -1,4 +1,4 @@
-using Munderwood.Ui.Canvas;
+using Munderwood.Ui.Canvas.Factories;
 using Munderwood.Ui.Template;
 using UnityEngine;
 

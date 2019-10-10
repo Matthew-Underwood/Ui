@@ -1,0 +1,18 @@
+{
+  "name": "munderwood.ui",
+  "displayName": "Ui",
+  "version": "0.0.1",
+  "unity": "2019.2",
+  "description": "Ui",
+  "keywords": [
+    "unity"
+  ],
+  "dependencies": {
+    "munderwood.events" : "0.0.1"
+  },
+  "repository": {
+    "type": "",
+    "url": "",
+    "revision":""
+  }
+}

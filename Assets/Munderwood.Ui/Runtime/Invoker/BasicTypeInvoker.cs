@@ -1,15 +1,14 @@
 using System;
 using System.Reflection;
-using UnityEngine;
 
 namespace Munderwood.Ui.Invoker
 {
-    public class BasicTypeInvoker : ITypeInvoker
+    public class BasicTypeInvoker
     {
-        public void CallMethod(object resolvedType, string name, object[] parameters)
+        public void CallMethod(object invokingObject, string name, object[] parameters)
         {
-            MethodInfo theMethod = resolvedType.GetType().GetMethod(name);
-            theMethod.Invoke(resolvedType, parameters);
+            MethodInfo theMethod = invokingObject.GetType().GetMethod(name);
+            theMethod.Invoke(invokingObject, parameters);
         }
     }
 }

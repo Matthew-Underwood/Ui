@@ -26,24 +26,24 @@ namespace Munderwood.Ui.Button
             this.buttonActionFactory = new ButtonActionFactory(button);
             
         }
-        public ButtonEventBuilder Click (string controllerName,string methodName)
+        public ButtonEventBuilder Click (Type controllerType,string methodName)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateClickAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener();
             button.SetEventInvoker(eventManager);
             button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder Click<T> (string controllerName,string methodName, T val)
+        public ButtonEventBuilder Click<T> (Type controllerType,string methodName, T val)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateClickAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val);
             eventManager.AssignValues(val);
             button.SetEventInvoker(eventManager);
@@ -51,12 +51,12 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder Click<T,T2> (string controllerName,string methodName, T val,T2 val2)
+        public ButtonEventBuilder Click<T,T2> (Type controllerType,string methodName, T val,T2 val2)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateClickAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2);
             eventManager.AssignValues(val,val2);
             button.SetEventInvoker(eventManager);
@@ -64,12 +64,12 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder Click<T,T2,T3> (string controllerName,string methodName, T val,T2 val2,T3 val3)
+        public ButtonEventBuilder Click<T,T2,T3> (Type controllerType,string methodName, T val,T2 val2,T3 val3)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateClickAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2,val3);
             eventManager.AssignValues(val,val2,val3);
             button.SetEventInvoker(eventManager);
@@ -77,12 +77,12 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder Click<T,T2,T3,T4> (string controllerName,string methodName, T val,T2 val2,T3 val3,T4 val4)
+        public ButtonEventBuilder Click<T,T2,T3,T4> (Type controllerType,string methodName, T val,T2 val2,T3 val3,T4 val4)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateClickAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2,val3,val4);
             eventManager.AssignValues(val,val2,val3,val4);
             button.SetEventInvoker(eventManager);
@@ -90,24 +90,24 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder HoverIn (string controllerName,string methodName)
+        public ButtonEventBuilder HoverIn (Type controllerType,string methodName)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverInAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener();
             button.SetEventInvoker(eventManager);
             button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder HoverIn<T> (string controllerName,string methodName, T val)
+        public ButtonEventBuilder HoverIn<T> (Type controllerType,string methodName, T val)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverInAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val);
             eventManager.AssignValues(val);
             button.SetEventInvoker(eventManager);
@@ -115,12 +115,12 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder HoverIn<T,T2> (string controllerName,string methodName, T val,T2 val2)
+        public ButtonEventBuilder HoverIn<T,T2> (Type controllerType,string methodName, T val,T2 val2)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverInAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2);
             eventManager.AssignValues(val,val2);
             button.SetEventInvoker(eventManager);
@@ -128,12 +128,12 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder HoverIn<T,T2,T3> (string controllerName,string methodName, T val,T2 val2,T3 val3)
+        public ButtonEventBuilder HoverIn<T,T2,T3> (Type controllerType,string methodName, T val,T2 val2,T3 val3)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverInAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2,val3);
             eventManager.AssignValues(val,val2,val3);
             button.SetEventInvoker(eventManager);
@@ -141,36 +141,36 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder HoverIn<T,T2,T3,T4> (string controllerName,string methodName, T val,T2 val2,T3 val3,T4 val4)
+        public ButtonEventBuilder HoverIn<T,T2,T3,T4> (Type controllerType,string methodName, T val,T2 val2,T3 val3,T4 val4)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverInAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2,val3,val4);
             eventManager.AssignValues(val,val2,val3,val4);
             button.SetEventInvoker(eventManager);
             button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
-        public ButtonEventBuilder HoverOut (string controllerName,string methodName)
+        public ButtonEventBuilder HoverOut (Type controllerType,string methodName)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverOutAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener();
             button.SetEventInvoker(eventManager);
             button.SetPointerDataEventInvoker(pointerDataEventManager);
             return this;
         }
         
-        public ButtonEventBuilder HoverOut<T> (string controllerName,string methodName, T val)
+        public ButtonEventBuilder HoverOut<T> (Type controllerType,string methodName, T val)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverOutAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val);
             eventManager.AssignValues(val);
             button.SetEventInvoker(eventManager);
@@ -178,12 +178,12 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder HoverOut<T,T2> (string controllerName,string methodName, T val,T2 val2)
+        public ButtonEventBuilder HoverOut<T,T2> (Type controllerType,string methodName, T val,T2 val2)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverOutAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2);
             eventManager.AssignValues(val,val2);
             button.SetEventInvoker(eventManager);
@@ -191,12 +191,12 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder HoverOut<T,T2,T3> (string controllerName,string methodName, T val,T2 val2,T3 val3)
+        public ButtonEventBuilder HoverOut<T,T2,T3> (Type controllerType,string methodName, T val,T2 val2,T3 val3)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverOutAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2,val3);
             eventManager.AssignValues(val,val2,val3);
             button.SetEventInvoker(eventManager);
@@ -204,12 +204,12 @@ namespace Munderwood.Ui.Button
             return this;
         }
         
-        public ButtonEventBuilder HoverOut<T,T2,T3,T4> (string controllerName,string methodName, T val,T2 val2,T3 val3,T4 val4)
+        public ButtonEventBuilder HoverOut<T,T2,T3,T4> (Type controllerType,string methodName, T val,T2 val2,T3 val3,T4 val4)
         {
-            var controller = this.controllerResolver.Resolve(controllerName);
+            var controller = this.controllerResolver.Resolve(controllerType);
             IEventInvoker button = buttonActionFactory.CreateHoverOutAction();
-            EventManager eventManager = new EventManager(controller, Type.GetType(controllerName), methodName);
-            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,Type.GetType(controllerName), "SetPointerEventData");
+            EventManager eventManager = new EventManager(controller, controllerType, methodName);
+            PointerDataEventManager pointerDataEventManager = new PointerDataEventManager(controller,controllerType, "SetPointerEventData");
             eventManager.AddListener(val,val2,val3,val4);
             eventManager.AssignValues(val,val2,val3,val4);
             button.SetEventInvoker(eventManager);

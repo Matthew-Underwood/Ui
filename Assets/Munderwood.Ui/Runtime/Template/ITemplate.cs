@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 using Munderwood.Ui.Canvas.Factories;
 using UnityEngine.EventSystems;
 
-namespace Project.Test
+namespace Munderwood.Ui.Template
 {
     public interface ITemplate
     {

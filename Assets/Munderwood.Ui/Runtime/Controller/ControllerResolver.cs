@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,14 +14,14 @@ namespace Munderwood.Ui.Controller
             _controllerFactory = controllerFactory;
         }
 
-        public GameObject Resolve(string controllerName)
+        public GameObject Resolve(Type controller)
         {
-            if (!_controllerRegistry.ContainsKey(controllerName))
+            if (!_controllerRegistry.ContainsKey(controller.ToString()))
             {
-                _controllerRegistry.Add(controllerName,_controllerFactory.CreateController(controllerName));
+                _controllerRegistry.Add(controller.ToString(),_controllerFactory.CreateController(controller));
             }
 
-            return _controllerRegistry[controllerName];
+            return _controllerRegistry[controller.ToString()];
         }
     }
 }

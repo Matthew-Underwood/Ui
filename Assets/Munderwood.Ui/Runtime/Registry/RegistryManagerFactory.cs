@@ -7,8 +7,6 @@ namespace Munderwood.Ui
         public RegistryManager Create()
         {
             RegistryManager registryManager = new RegistryManager();
-            registryManager.InvokerRegistry.Add("BasicInvoker", new BasicTypeInvoker());
-            registryManager.InvokerRegistry.Add("GameObjectInvoker", new GameObjectInvoker());
             return registryManager;
         }
     }

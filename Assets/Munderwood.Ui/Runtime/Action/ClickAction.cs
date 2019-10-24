@@ -21,6 +21,7 @@ namespace Munderwood.Ui.Action
         
         public void OnPointerUp(PointerEventData eventData)
         {
+            
             if (_eventManager != null && _pointerDataEventManager != null)
             {
                 _eventManager.Invoke();

@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using Munderwood.Test.Input;
+using System;
 using Munderwood.Ui.Canvas.Factories;
 using Munderwood.Ui.Invoker;
 using Munderwood.Ui.Template;
@@ -11,7 +10,7 @@ namespace Munderwood.Ui.Controller
     public class BaseController : MonoBehaviour, IPointerData
     {
         protected TemplateFactory templateFactory;
-        protected Dictionary<string, ITypeInvoker> invokerRegistry;
+        protected BasicTypeInvoker basicTypeInvoker;
         protected CanvasBuilderFactory canvasBuilderFactory;
         protected PointerEventData pointerEventData;
 
@@ -21,10 +20,10 @@ namespace Munderwood.Ui.Controller
             set => templateFactory = value;
         }
         
-        public Dictionary<string, ITypeInvoker> InvokerRegistry
+        public BasicTypeInvoker BasicTypeInvoker
         {
-            get => invokerRegistry;
-            set => invokerRegistry = value;
+            get => basicTypeInvoker;
+            set => basicTypeInvoker = value;
         }
         
         public CanvasBuilderFactory CanvasBuilderFactory
@@ -38,10 +37,10 @@ namespace Munderwood.Ui.Controller
             this.pointerEventData = pointerEventData;
         }
 
-        protected void Template (string name,object values = null)
+        protected void Template (Type type, object values = null)
         {
-            var template = TemplateFactory.CreateTemplate(name);
-            InvokerRegistry["BasicInvoker"].CallMethod(template, "Build",new object[]{CanvasBuilderFactory,this.pointerEventData,values});
+            ITemplate template = TemplateFactory.CreateTemplate(type);
+            BasicTypeInvoker.CallMethod(template, "Build",new object[]{CanvasBuilderFactory,this.pointerEventData,values});
         }
     }
 }

@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using Project.Test;
 
 namespace Munderwood.Ui.Template
 {
@@ -12,17 +12,17 @@ namespace Munderwood.Ui.Template
             _templateRegistry = templateRegistry;
         }
         
-        public ITemplate CreateTemplate(string name)
+        public ITemplate CreateTemplate(Type type)
         {
-            if (_templateRegistry.ContainsKey(name))
+            if (_templateRegistry.ContainsKey(type.ToString()))
             {
-                return _templateRegistry[name];
+                return _templateRegistry[type.ToString()];
             }
             
             TypeResolver typeResolver = new TypeResolver();
-            ITemplate template = (ITemplate) typeResolver.Resolve(name,new object[] {});
+            ITemplate template = (ITemplate) typeResolver.Resolve(type,new object[] {});
             
-            _templateRegistry.Add(name, template);
+            _templateRegistry.Add(type.ToString(), template);
             return template;
         }
     }

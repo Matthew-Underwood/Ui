@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Munderwood.Ui.Controller;
+using Munderwood.Ui.Invoker;
 using Munderwood.Ui.Scene;
 using UnityEngine;
 
@@ -20,8 +21,9 @@ namespace Munderwood.Ui.Bootstrap
             foreach (var type in types)
             {
                 RegistryManager registryManager = (new RegistryManagerFactory()).Create();
-                ControllerFactory controllerFactory = new ControllerFactory(registryManager);
-                BootStrap bootstrap = new BootStrap(registryManager,controllerFactory);
+                BasicTypeInvoker basicTypeInvoker = new BasicTypeInvoker();
+                ControllerFactory controllerFactory = new ControllerFactory(registryManager,basicTypeInvoker);
+                BootStrap bootstrap = new BootStrap(registryManager,controllerFactory,basicTypeInvoker);
                 object example = Activator.CreateInstance(type,new object[]{});
                 MethodInfo initMethod = example.GetType().GetMethod("Init");
                 if (initMethod != null)

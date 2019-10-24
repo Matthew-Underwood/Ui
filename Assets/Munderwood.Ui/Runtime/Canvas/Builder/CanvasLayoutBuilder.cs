@@ -13,56 +13,57 @@ namespace Munderwood.Ui.Canvas.Builder
             this.canvasDimensionsTransformer = canvasDimensionsTransformer;
         }
         
-        public CanvasLayoutBuilder Horizontal (float spacing,RectOffset padding)
+        public CanvasLayoutBuilder Horizontal (float spacing,RectOffset padding,TextAnchor textAnchor)
         {
             HorizontalLayoutGroup gridLayoutGroup = canvas.AddComponent<HorizontalLayoutGroup>();
             gridLayoutGroup.spacing = spacing;
             gridLayoutGroup.padding = padding;
-            //canvasDimensionsTransformer.SetWidth(gridLayoutGroup.minWidth);
-            //canvasDimensionsTransformer.SetHeight(gridLayoutGroup.minHeight);
+            gridLayoutGroup.childAlignment = textAnchor;
+            gridLayoutGroup.childForceExpandHeight = false;
+            gridLayoutGroup.childForceExpandWidth = false;
+            gridLayoutGroup.childControlHeight = false;
+            gridLayoutGroup.childControlWidth = false;
+            UnityEngine.Canvas.ForceUpdateCanvases();
             return this;
         }
         
-        public CanvasLayoutBuilder Vertical (float spacing,RectOffset padding)
+        public CanvasLayoutBuilder Vertical (float spacing,RectOffset padding,TextAnchor textAnchor)
         {
             VerticalLayoutGroup gridLayoutGroup = canvas.AddComponent<VerticalLayoutGroup>();
             gridLayoutGroup.spacing = spacing;
             gridLayoutGroup.padding = padding;
+            gridLayoutGroup.childAlignment = textAnchor;
+            gridLayoutGroup.childForceExpandHeight = false;
+            gridLayoutGroup.childForceExpandWidth = false;
+            gridLayoutGroup.childControlHeight = false;
+            gridLayoutGroup.childControlWidth = false;
             UnityEngine.Canvas.ForceUpdateCanvases();
-            canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,gridLayoutGroup.minHeight);
-            canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,gridLayoutGroup.minWidth);
-            //canvasDimensionsTransformer.SetWidth(gridLayoutGroup.minWidth);
-            //canvasDimensionsTransformer.SetHeight(gridLayoutGroup.minHeight);
             return this;
         }
 
-        public CanvasLayoutBuilder Rows (int number,Vector2 spacing,Vector2 cellSize)
+        public CanvasLayoutBuilder Rows (int number,Vector2 spacing,Vector2 cellSize,TextAnchor textAnchor)
         {
             GridLayoutGroup gridLayoutGroup = canvas.AddComponent<GridLayoutGroup>();
             gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedRowCount;
             gridLayoutGroup.constraintCount = number;
             gridLayoutGroup.spacing = spacing;
             gridLayoutGroup.cellSize = cellSize;
+            gridLayoutGroup.childAlignment = textAnchor;
             UnityEngine.Canvas.ForceUpdateCanvases();
-            canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,gridLayoutGroup.minHeight);
-            canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,gridLayoutGroup.minWidth);
-            //canvasDimensionsTransformer.SetWidth(gridLayoutGroup2.minWidth);
-            //canvasDimensionsTransformer.SetHeight(gridLayoutGroup2.minHeight);
             return this;
         }
         
-        public CanvasLayoutBuilder Columns (int number,Vector2 spacing,Vector2 cellSize)
+        public CanvasLayoutBuilder Columns (int number,Vector2 spacing,Vector2 cellSize,TextAnchor textAnchor)
         {
             GridLayoutGroup gridLayoutGroup = canvas.AddComponent<GridLayoutGroup>();
             gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             gridLayoutGroup.constraintCount = number;
             gridLayoutGroup.spacing = spacing;
             gridLayoutGroup.cellSize = cellSize;
+            gridLayoutGroup.childAlignment = textAnchor;
             UnityEngine.Canvas.ForceUpdateCanvases();
-            canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,gridLayoutGroup.minHeight);
-            canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,gridLayoutGroup.minWidth);
-            //canvasDimensionsTransformer.SetWidth(gridLayoutGroup.minWidth);
-            //canvasDimensionsTransformer.SetHeight(gridLayoutGroup.minHeight);
+            //canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,gridLayoutGroup.minHeight);
+            //canvas.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,gridLayoutGroup.minWidth);
             return this;
         }
     }

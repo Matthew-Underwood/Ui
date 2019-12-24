@@ -1,9 +1,9 @@
 {
     "name": "Munderwood.Ui.Runtime",
     "references": [
-        "GUID:d4c7ea670c254ddf8d1d255887e2035d"
+        "GUID:d4c7ea670c254ddf8d1d255887e2035d",
+        "GUID:bc625da7b112c134fa71669a1863a940"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,

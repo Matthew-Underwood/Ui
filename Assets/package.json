@@ -8,7 +8,8 @@
     "unity"
   ],
   "dependencies": {
-    "munderwood.events" : "0.0.1"
+    "munderwood.events" : "0.0.1",
+    "munderwood.core" : "0.0.1"
   },
   "repository": {
     "type": "",

@@ -1,5 +1,5 @@
 using System;
-using Munderwood.Ui.Invoker;
+using Munderwood.Core.Invoker;
 using UnityEngine;
 
 namespace Munderwood.Ui.Controller

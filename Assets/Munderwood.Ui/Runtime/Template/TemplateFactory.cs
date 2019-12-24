@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Munderwood.Core.Resolver;
 
 namespace Munderwood.Ui.Template
 {
